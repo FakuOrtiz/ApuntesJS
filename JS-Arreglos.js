@@ -64,80 +64,20 @@ alumnos.forEach(function(elemento, indice){
 
 //MÉTODOS DE ARREGLOS
 
-let posts = [
-    {
-        id: 0,
-        title: "Mi primer post",
-        image: "https://image.com/0",
-        tags: ["javascript", "webdevelopment"]
-    },
-    {
-        id: 1,
-        title: "Mi segundo post",
-        image: "https://image.com/1",
-        tags: ["javascript", "webdevelopment", "react"]
-    },
-    {
-        id: 2,
-        title: "Mi tercer post",
-        image: "https://image.com/0",
-        tags: ["javascript", "webdevelopment", "node"]
-    },
-];
-
-//1- .find()-------------------------------------------------------------------
-//Le pedimos que nos busque cada post donde su id sea == 1. DEVUELVE LA 1er COINCIDENCIA
-console.log(posts.find(post => post.id == 1));
-
-//2- .filter()-----------------------------------------------------------------
-//Le pedimos que nos busque cada post donde su id sea == 1. DEVUELVE SIEMPRE UN ARRAY
-console.log(posts.filter(post => post.id == 1));
-
-//3- .some()-------------------------------------------------------------------
-//¿Hay algún post donde el id sea == 2?
-console.log(posts.some(post => post.id == 3));
-console.log(posts.some(post => post.tags.includes("react")));
-
-//4- .every()------------------------------------------------------------------
-//¿En todos los posts, se incluye el tag "react"?
-console.log(posts.every(post => post.tags.includes("react")));
-
-//5- map()---------------------------------------------------------------------
-//Devuelve un nuevo arreglo con los elementos que le pedimos 
-console.log(posts.map(post => post.title));
-//Multiplicar cada elemento del array por 2 con .map
-let numeros = [1, 2, 3, 4, 5];
-console.log(numeros.map(num => num*2));
-
-//6- .reduce()-----------------------------------------------------------------
-//Devuelve un array con todas las tags utilizadas en los objetos
-console.log(posts.reduce((acc, post) => {
-    return [...acc, ...post.tags];
-}, []));
-//Suma todos los números de un array con .reduce
-console.log(numeros.reduce((acc, num) => {
-    return acc + num;
-}));
-
-//7- .slice()------------------------------------------------------------------
-let array1 = [10, 20, 30, 40, 50, 60];
-let subArr1 = array1.slice(0, 3);
-console.log(subArr1);
-let subArr2 = array1.slice(array1.length-1);
-console.log(subArr2);
-let subArr3 = array1.slice(3);
-console.log(subArr3);
-
-//8- .indexOf()----------------------------------------------------------------
-console.log(array1.indexOf(50));
-
-//9- .forEach()----------------------------------------------------------------
-posts.forEach(post => {
-    console.log(post.title);
-});
-
-//10- .findIndex()-------------------------------------------------------------
-let a = posts.findIndex(i => {
-    return i.title == "Mi tercer post";
-});
-console.log(a);
+[3, 4, 5, 6].at(1); // 4
+[3, 4, 5, 6].push(7); // [3, 4, 5, 6, 7]
+[3, 4, 5, 6].pop(); // [3, 4, 5]
+[3, 4, 5, 6].shift(); // [4, 5, 6]
+[3, 4, 5, 6].unshift(1); // [1, 3, 4, 5, 6]
+[3, 4, 5, 6].fill(1); // [1, 1, 1, 1]
+[3, 4, 5, 6].join("-"); // "3-4-5-6"
+[3, 4, 5, 6].reverse(); // [6, 5, 4, 3]
+[3, 4, 5, 6].includes(5); // true
+[3, 4, 5, 6].slice(0, 2); // [3, 4, 5]
+[3, 4, 5, 6].map((num) => num + 6); // [9, 19, 11, 12]
+[3, 4, 5, 6].find((num) => num > 4); // 5
+[3, 4, 5, 6].some((num) => num > 5); // true
+[3, 4, 5, 6].filter((num) => num > 4); // [5, 6]
+[3, 4, 5, 6].every((num) => num > 5); // false
+[3, 4, 5, 6].findIndex((num) => num > 4); // 2
+[3, 4, 5, 6].reduce((acc, num) => acc + num); // 18
