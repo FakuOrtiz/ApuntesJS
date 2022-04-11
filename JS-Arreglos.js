@@ -74,6 +74,7 @@ alumnos.forEach(function(elemento, indice){
 [3, 4, 5, 6].reverse(); // [6, 5, 4, 3]
 [3, 4, 5, 6].includes(5); // true
 [3, 4, 5, 6].slice(0, 2); // [3, 4, 5]
+[3, 4, [5, 6]].flat(); // [3, 4, 5, 6]
 [3, 4, 5, 6].map((num) => num + 6); // [9, 19, 11, 12]
 [3, 4, 5, 6].find((num) => num > 4); // 5
 [3, 4, 5, 6].some((num) => num > 5); // true
