@@ -149,3 +149,31 @@ logNombre2.call(persona, "Hola", ", cómo estas?");
 //Function.prototype.apply()----------------------------------------------------
 //Igual a call, solo que el segundo argumento es un arreglo.
 logNombre2.apply(persona, ['Buenas', ', todo bien?']);
+
+
+
+//Parámetros REST (...args)-----------------------------------------------------
+function suma(a, b, ...c){
+    let resultado = a + b;
+    c.forEach(num => resultado += num);
+    return resultado;
+}
+console.log(suma(1, 2, 3, 4, 5, 6));
+
+
+
+//Spread operator - Operador de propagación-------------------------------------
+let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [6, 7, 8, 9, 0];
+let arr4 = [arr1, arr2]; //[[1, 2, 3, 4, 5], [6, 7, 8, 9, 0]]
+let arr3 = [...arr1, ...arr2]; //[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+
+
+//Recursión - Factorial---------------------------------------------------------
+//4! = 4 * 3!
+function factorial(num){
+    if (num === 0 || num === 1) return 1;
+    else if (num < 0) return 0;
+    return num * factorial(num - 1);
+}
