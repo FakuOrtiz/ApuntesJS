@@ -79,7 +79,73 @@ Grupos
 
 
 //setTimeout() y setInterval()--------------------------------------------------
-setTimeout(() => console.log("Hola"), 10000); //setTimeout(funcion, milisegs)
-let interval = setInterval(() => console.log("Chau"), 3000); //setInterval(funcion, milisegs)
+setTimeout(() => console.log("Hola"), 6000); //setTimeout(funcion, milisegs)
+let interval = setInterval(() => console.log("Chau"), 2000); //setInterval(funcion, milisegs)
 //Esto para que no corra infinitamente, se guarda el setInterval en una variable
-setTimeout(() => clearInterval(interval), 10000);
+setTimeout(() => clearInterval(interval), 5000);
+
+
+
+//Closures----------------------------------------------------------------------
+function saludar(saludo){
+    return function(nombre){
+        console.log(saludo + ' ' + nombre);
+    }
+}
+let saludarHola = saludar('Hola'); // Esto devuelve una función
+let saludarChau = saludar("Chau"); // Esto devuelve una función
+saludarHola('Facu'); // Hola Facu
+saludarChau("Facu"); // Chau Facu
+
+function hacerSaludo(idioma) {
+    if (idioma === "es") {
+        return function(nombre){
+            console.log("Hi, " + nombre + "!");
+        }
+    }
+    if (idioma === "en") {
+        return function(nombre) {
+            console.log("Hola, " + nombre + "!");
+        }
+    }
+}
+let saludoEspaniol = hacerSaludo("es");
+let saludoIngles = hacerSaludo("en");
+saludoEspaniol("Facu");
+saludoIngles("Facundo");
+
+
+//Function.prototype.bind()-----------------------------------------------------
+//crea una nueva función donde el 1er parámetro es donde quiero que apunte el this
+let persona = {
+    nombre: "Facundo",
+    apellido: "Ortiz"
+}
+let logNombre = function() {
+    console.log(this.nombre + " " + this.apellido);
+}
+let logNombrePersona = logNombre.bind(persona);
+logNombrePersona();
+
+
+let multiplicar = function(a, b) {
+    console.log(a * b);
+}
+let multiplicarPorDos = multiplicar.bind(this, 2); //a = 2
+multiplicarPorDos(3); //b = 3
+
+
+
+//Function.prototype.call()-----------------------------------------------------
+//Call hace lo mismo que Bind, solo que invoca la función, no devuelve una nueva.
+logNombre.call(persona);
+var logNombre2 = function(a, b){
+    console.log(a +' '+ this.nombre + b);
+}
+logNombre2.call(persona, "Hola", ", cómo estas?");
+
+
+
+//Function.prototype.apply()----------------------------------------------------
+//Igual a call, solo que el segundo argumento es un arreglo.
+logNombre2.apply(persona, ['Buenas', ', todo bien?']);
